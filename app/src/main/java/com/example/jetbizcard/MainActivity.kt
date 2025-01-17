@@ -129,6 +129,12 @@ private fun ProfileImage() {
                )
                Text(text = "Android Developer")
                Text(text = "Frontend engineer")
+               HorizontalDivider(thickness = 2.dp)
+               Text(text = "About ME",
+               style =MaterialTheme.typography.headlineMedium,
+                   color = MaterialTheme.colorScheme.primary
+               )
+               Text(text="I am an enthusiastic, self-motivated, reliable, responsible and hard working person")
                Button(onClick = {
                    buttonClickedState.value = !buttonClickedState.value
                },
@@ -139,9 +145,22 @@ private fun ProfileImage() {
                if(buttonClickedState.value){
                    Content()
                }
-else{
+               else{
                    Box{}
-}
+               }
+               Button(onClick = {
+                   buttonClickedState.value = !buttonClickedState.value
+               },
+                   modifier = Modifier.fillMaxWidth()) {
+                   Text(text = "Skills"
+                       , style = MaterialTheme.typography.bodyLarge)
+               }
+               if(buttonClickedState.value){
+                   Skills()
+               }
+               else{
+                   Box{}
+               }
 
            }
        }
@@ -163,10 +182,11 @@ Surface(modifier = Modifier
     .border(BorderStroke(2.dp, Color.LightGray)),
 
     shape = RoundedCornerShape(corner =CornerSize(8.dp )),
+    color = MaterialTheme.colorScheme.onBackground
 ){
-Portfolio(data = listOf("Project 1","Project 2","Project 3")
+Portfolio(data = listOf("Android","IOS","Power Bi","AI ML","Website","Project 6","Project 7","Project 8","Project 9","Project 10"))
 
-)}
+}
 }
 }
 
@@ -177,26 +197,70 @@ fun Portfolio(data: List<String>) {
             Card(
                 modifier = Modifier
                     .padding(13.dp)
-                    .fillMaxWidth(),
-                shape=RectangleShape) {
-                Row(modifier = Modifier
-                    .padding(8.dp)
-                    .background(color = MaterialTheme.colorScheme.surface)
-                    .padding(16.dp)) {
-                    
+                    .fillMaxWidth()
+                    .border(BorderStroke(2.dp, Color.LightGray)),
+                shape = RoundedCornerShape(corner = CornerSize(6.dp)),
+                elevation = CardDefaults.cardElevation(4.dp)
+            ) {
+                Row(
+                    modifier = Modifier
+                        .padding(2.dp)
+                        .fillMaxWidth()
+                        .background(color = MaterialTheme.colorScheme.surface)
+                        .padding(10.dp)
+                ) {
+                    Surface(
+                        modifier = Modifier
+                            .padding(3.dp)
+                            ,
+                        shape = CircleShape,
+                    ) {
+                        Image(
+                            painter = painterResource(id = com.example.jetbizcard.R.drawable.profile_image),
+                            contentDescription = "profile image",
+                            modifier = Modifier.size(100.dp)
+                        )
+
+                    }
+                    Column(
+                        modifier = Modifier
+                            .padding(7.dp)
+                            .align(alignment = Alignment.CenterVertically)
+                    ) {
+                        Text(
+                            text = item,
+                            fontWeight = androidx.compose.ui.text.font.FontWeight.Bold
+                        )
+                        Text(text = "By Rahul Roy")
+                    }
                 }
             }
         }
     }
 }
 @Composable
-fun GreetingPreview() {
-    JetBizCardTheme {
-        CreateBizCard()
-    }
+fun Skills(){ val buttonClickedState = remember {
+    mutableStateOf(false)
 }
 
-    
+    Box(modifier= Modifier
+        .fillMaxHeight()
+        .fillMaxWidth()
+        .padding(5.dp)){
+        Surface(modifier = Modifier
+            .padding(3.dp)
+            .fillMaxHeight()
+            .fillMaxWidth()
+            .border(BorderStroke(2.dp, Color.LightGray)),
+
+            shape = RoundedCornerShape(corner =CornerSize(8.dp )),
+            color = MaterialTheme.colorScheme.onBackground
+        ){
+
+        }
+    }
+
+}
 
 
 
